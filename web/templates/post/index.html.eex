@@ -1,8 +1,6 @@
-<h4>Posts</h4>
+<h2>Posts</h2>
 
-<% for post <- @posts do %>
-  <%= post.id %>
-  <%= post.user_id %>
-  <%= post.title %>
-  <%= post.body %>
+<%= for post <- @posts do %>
+  <h3><%= post.title %></h3>
+  <p><%= post.body %></p>
 <% end %>
