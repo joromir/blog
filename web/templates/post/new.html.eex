@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h3>New Post</h3>
 
-  <%= form_for @changeset, @action, fn f -> %>
-  <% end %>
+  <%#= form_for @changeset, @action, fn f -> %>
+  <%# end %>
 </div>
