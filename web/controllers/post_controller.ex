@@ -9,6 +9,11 @@ defmodule Blog.PostController do
     render conn, "index.html", posts: posts
   end
 
+  def edit(conn, %{ "id" => id } = params) do
+    post = Repo.get!(Post, id)
+    render conn, "edit.html", post: post
+  end
+
   def new(conn, params) do
     changeset = Post.changeset(%Post{}, params)
     render conn, "new.html", changeset: changeset
