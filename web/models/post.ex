@@ -12,7 +12,7 @@ defmodule Blog.Post do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :body, :user_id])
+    |> cast(params, [:title, :body, :user_id, :short_description])
     # |> validate_required([:title, :body, :user_id])
   end
 end

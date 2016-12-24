@@ -23,4 +23,17 @@ defmodule Blog.PostController do
     changeset = Post.changeset(%Post{}, params)
     render conn, "new.html", changeset: changeset
   end
+
+  def create(conn, %{"post" => post_params}) do
+    changeset = Post.changeset(%Post{}, post_params)
+
+    case Repo.insert(changeset) do
+      {:ok, elem} ->
+        conn
+        |> text("created!")
+      _ ->
+        conn
+        |> text("Something bad happened! :(")
+    end
+  end
 end
