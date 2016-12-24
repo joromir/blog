@@ -1,1 +1,21 @@
 <h3>Edit</h3>
+
+<h2 id="preview_title"></h2>
+
+<p id="preview_short_description"></p>
+
+<p id="preview_body"></p>
+
+<%= form_for @changeset, post_path(@conn, :update, @post), fn f -> %>
+  <%= text_input f, :title, class: 'form-control', placeholder: 'Title' %>
+  <br>
+
+  <%= textarea f, :short_description, class: 'form-control', placeholder: 'Short description' %>
+  <br>
+
+  <%= textarea f, :body, class: 'form-control', placeholder: 'Body' %>
+  <br>
+
+  <%= link "Preview", to: "#", class: 'btn btn-success btn-lg' %>
+  <%= submit "Publish", class: 'btn btn-danger btn-lg' %>
+<% end %>

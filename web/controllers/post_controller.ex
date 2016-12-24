@@ -16,7 +16,13 @@ defmodule Blog.PostController do
 
   def edit(conn, %{ "id" => id }) do
     post = Repo.get!(Post, id)
-    render conn, "edit.html", post: post
+    changeset = Post.changeset(post)
+    render conn, "edit.html", post: post, changeset: changeset
+  end
+
+  def update(conn, _) do
+    conn
+    |> text("TODO")
   end
 
   def new(conn, params) do
