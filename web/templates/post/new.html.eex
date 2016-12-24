@@ -1,6 +1,13 @@
 <div class="jumbotron">
   <h3>New Post</h3>
 
-  <%#= form_for @changeset, @action, fn f -> %>
-  <%# end %>
+  <%= form_for @changeset, post_path(@conn, :create), fn f -> %>
+    <%= text_input f, :title, class: 'form-control', placeholder: 'Title' %>
+    <br>
+    <%= textarea f, :short_description, class: 'form-control', placeholder: 'Short description' %>
+    <br>
+    <%= textarea f, :body, class: 'form-control', placeholder: 'Body' %>
+    <br>
+    <%= submit "Publish", class: 'btn btn-success btn-lg' %>
+  <% end %>
 </div>
