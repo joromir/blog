@@ -1,10 +1,10 @@
 <h3>Edit</h3>
 
-<h2 id="preview_title"></h2>
+<h2 id="title_preview"></h2>
 
-<p id="preview_short_description"></p>
+<p id="short_description_preview"></p>
 
-<p id="preview_body"></p>
+<p id="body_preview"></p>
 
 <div class='jumbotron'>
   <%= form_for @changeset, post_path(@conn, :update, @post), fn f -> %>
@@ -17,17 +17,23 @@
     <%= textarea f, :body, class: 'form-control', placeholder: 'Body', id: 'body_draft' %>
     <br>
 
-    <a href="#" onclick="show_draft();" class='btn btn-success btn-lg'>Privew</a>
+    <a href="#" onclick="showDraft();" class='btn btn-success btn-lg'>Privew</a>
     <%= submit "Publish", class: 'btn btn-danger btn-lg' %>
   <% end %>
 </div>
 
 
 <script type="text/javascript">
-// TODO: move to assets after removing code duplication..
-function show_draft() {
-  document.getElementById('preview_title').innerHTML = document.getElementById('title_draft').value;
-  document.getElementById('preview_short_description').innerHTML = document.getElementById('short_description_draft').value;
-  document.getElementById('preview_body').innerHTML = document.getElementById('body_draft').value;
+// TODO: move to assets..
+function showDraft() {
+  var draft_elems = ['title', 'short_description', 'body']
+
+  draft_elems.forEach(function(elem){
+    displayElem(elem);
+  });
+}
+
+function displayElem(elem) {
+  document.getElementById(elem + '_preview').innerHTML = document.getElementById(elem + '_draft').value;
 }
 </script>
