@@ -6,16 +6,28 @@
 
 <p id="preview_body"></p>
 
-<%= form_for @changeset, post_path(@conn, :update, @post), fn f -> %>
-  <%= text_input f, :title, class: 'form-control', placeholder: 'Title' %>
-  <br>
+<div class='jumbotron'>
+  <%= form_for @changeset, post_path(@conn, :update, @post), fn f -> %>
+    <%= text_input f, :title, class: 'form-control', placeholder: 'Title', id: 'title_draft' %>
+    <br>
 
-  <%= textarea f, :short_description, class: 'form-control', placeholder: 'Short description' %>
-  <br>
+    <%= textarea f, :short_description, class: 'form-control', placeholder: 'Short description', id: 'short_description_draft' %>
+    <br>
 
-  <%= textarea f, :body, class: 'form-control', placeholder: 'Body' %>
-  <br>
+    <%= textarea f, :body, class: 'form-control', placeholder: 'Body', id: 'body_draft' %>
+    <br>
 
-  <%= link "Preview", to: "#", class: 'btn btn-success btn-lg' %>
-  <%= submit "Publish", class: 'btn btn-danger btn-lg' %>
-<% end %>
+    <a href="#" onclick="show_draft();" class='btn btn-success btn-lg'>Privew</a>
+    <%= submit "Publish", class: 'btn btn-danger btn-lg' %>
+  <% end %>
+</div>
+
+
+<script type="text/javascript">
+// TODO: move to assets after removing code duplication..
+function show_draft() {
+  document.getElementById('preview_title').innerHTML = document.getElementById('title_draft').value;
+  document.getElementById('preview_short_description').innerHTML = document.getElementById('short_description_draft').value;
+  document.getElementById('preview_body').innerHTML = document.getElementById('body_draft').value;
+}
+</script>
