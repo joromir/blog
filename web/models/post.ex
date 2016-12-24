@@ -5,6 +5,7 @@ defmodule Blog.Post do
     field :title, :string
     field :body, :string
     field :user_id, :integer
+    field :short_description, :string
 
     timestamps()
   end
