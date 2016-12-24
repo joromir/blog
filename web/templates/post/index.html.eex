@@ -5,6 +5,7 @@
   <%= for post <- @posts do %>
     <h3><%= show_post_path(@conn, post) %></h3>
     <p><%= post.short_description %></p>
+    <hr>
   <% end %>
   </div>
 
