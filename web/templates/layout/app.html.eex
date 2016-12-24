@@ -14,7 +14,7 @@
   <body>
     <div class="container">
       <header class="header">
-        <h2>Blog</h2>
+        <h2><%= link "Blog", to: post_path(@conn, :index) %></h2>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
