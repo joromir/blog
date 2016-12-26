@@ -20,9 +20,18 @@ defmodule Blog.PostController do
     render conn, "edit.html", post: post, changeset: changeset
   end
 
-  def update(conn, _) do
-    conn
-    |> text("TODO")
+  def update(conn, %{"post" => post_params, "id" => id}) do
+    post = Repo.get!(Post, id)
+    changeset = Post.changeset(post, post_params)
+
+    case Repo.update(changeset) do
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Updated, brotha!")
+        |> redirect(to: post_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "edit.html", post: post, changeset: changeset)
+    end
   end
 
   def new(conn, params) do

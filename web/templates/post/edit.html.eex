@@ -26,14 +26,16 @@
 <script type="text/javascript">
 // TODO: move to assets..
 function showDraft() {
-  var draft_elems = ['title', 'short_description', 'body']
-
-  draft_elems.forEach(function(elem){
-    displayElem(elem);
+  ['title', 'short_description', 'body'].forEach(function(elem) {
+    showElement(elem);
   });
 }
 
-function displayElem(elem) {
-  document.getElementById(elem + '_preview').innerHTML = document.getElementById(elem + '_draft').value;
+function showElement(elem) {
+  document.getElementById(elem + '_preview').innerHTML = getInputValue(elem);
+}
+
+function getInputValue(elem) {
+  return document.getElementById(elem + '_draft').value;
 }
 </script>
