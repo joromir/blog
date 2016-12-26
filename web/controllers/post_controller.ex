@@ -28,7 +28,7 @@ defmodule Blog.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Updated, brotha!")
-        |> redirect(to: post_path(conn, :index))
+        |> redirect(to: post_path(conn, :show, post))
       {:error, changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
     end
@@ -50,5 +50,15 @@ defmodule Blog.PostController do
         conn
         |> text("Something bad happened! :(")
     end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    post = Repo.get!(Post, id)
+
+    Repo.delete!(post)
+
+    conn
+    |> put_flash(:info, "DELETED")
+    |> redirect to: post_path(conn, :index)
   end
 end

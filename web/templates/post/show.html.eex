@@ -12,7 +12,7 @@
 
     <ul>
       <li><%= link "Edit", to: post_path(@conn, :edit, @post) %></li>
-      <li><%= link "Delete", to: "#" %></li>
+      <li><%= link "Delete", to: post_path(@conn, :delete, @post), method: "delete" %></li>
     </ul>
   </div>
 </div>
