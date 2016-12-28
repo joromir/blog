@@ -6,6 +6,8 @@ defmodule Blog.Repo.Migrations.CreateComments do
       add :post_id, :integer
       add :user_id, :integer
       add :body, :text
+
+      timestamps()
     end
   end
 end

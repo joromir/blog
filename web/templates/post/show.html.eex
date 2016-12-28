@@ -16,3 +16,15 @@
     </ul>
   </div>
 </div>
+
+<div class='row'>
+  <div class='col-lg-8'>
+    <h2>Comments</h2>
+
+    <%= for comment <- @comments do %>
+      <h5>TODO: user</h5>
+      <p><%= comment.body %></p>
+      <hr>
+    <% end %>
+  </div>
+</div>
