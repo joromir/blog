@@ -7,6 +7,8 @@ defmodule Blog.Post do
     field :user_id, :integer
     field :short_description, :string
 
+    has_many :comments, Blog.Comment
+
     timestamps()
   end
 
