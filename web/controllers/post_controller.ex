@@ -45,10 +45,10 @@ defmodule Blog.PostController do
     case Repo.insert(changeset) do
       {:ok, elem} ->
         conn
-        |> text("created!")
+        |> put_flash(:info, "Post has been created successfully!")
+        |> redirect to: post_path(conn, :index)
       _ ->
-        conn
-        |> text("Something bad happened! :(")
+        render(conn, "new.html", changeset: changeset)
     end
   end
 
