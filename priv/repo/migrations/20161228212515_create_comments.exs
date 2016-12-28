@@ -1,0 +1,11 @@
+defmodule Blog.Repo.Migrations.CreateComments do
+  use Ecto.Migration
+
+  def change do
+    create table :comments do
+      add :post_id, :integer
+      add :user_id, :integer
+      add :body, :text
+    end
+  end
+end
