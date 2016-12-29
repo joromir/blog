@@ -3,6 +3,7 @@ defmodule Blog.PostController do
 
   alias Blog.Post
   alias Blog.Repo
+  alias Blog.Comment
 
   def index(conn, _) do
     posts = Repo.all(Post)
@@ -12,7 +13,7 @@ defmodule Blog.PostController do
   def show(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     |> Repo.preload(:comments)
-    render conn, "show.html", post: post
+    render conn, "show.html", post: post, comment: Comment.changeset(%Comment{}, %{"post_id" => id})
   end
 
   def edit(conn, %{ "id" => id }) do
