@@ -23,7 +23,7 @@
 
     <%= form_for @comment, post_comment_path(@conn, :create, @post), fn f -> %>
       <%= textarea f, :body, class: 'form-control', placeholder: "Comment content" %><br>
-      <%= submit "Submit", class: 'btn btn-primary btn-xl' %>
+      <%= submit "Submit", class: 'btn btn-success btn-xl' %>
     <% end %>
 
     <hr>
