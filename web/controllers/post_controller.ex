@@ -10,8 +10,9 @@ defmodule Blog.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.preload(Repo.get!(Post, id), :comments)
-    render conn, "show.html", post: post, comments: post.comments
+    post = Repo.get!(Post, id)
+    |> Repo.preload(:comments)
+    render conn, "show.html", post: post
   end
 
   def edit(conn, %{ "id" => id }) do
