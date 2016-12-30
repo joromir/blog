@@ -3,6 +3,7 @@ defmodule Blog.CommentController do
 
   alias Blog.Comment
   alias Blog.Repo
+  alias Blog.Post
 
   def create(conn, %{"comment" => comment_params, "post_id" => post_id}) do
     changeset = %Comment{}
@@ -12,7 +13,7 @@ defmodule Blog.CommentController do
       {:ok, comment} ->
         conn
         |> put_flash(:info, "Saved! #{}")
-        |> redirect(to: post_path(conn, :index))
+        |> redirect(to: post_path(conn, :show, Repo.get!(Post, post_id)))
       _ -> 
         conn
         |> text("Something really bad happened!!!")
