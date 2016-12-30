@@ -2,7 +2,7 @@ defmodule Blog.Comment do
   use Blog.Web, :model
 
   schema "comments" do
-    field :body
+    field :body, :string
     belongs_to :post, Blog.Post
 
     timestamps

@@ -13,7 +13,9 @@ defmodule Blog.PostController do
   def show(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     |> Repo.preload(:comments)
-    render conn, "show.html", post: post, comment: Comment.changeset(%Comment{}, %{"post_id" => id})
+
+    new_comment = Comment.changeset(%Comment{}, %{"post_id" => id})
+    render conn, "show.html", post: post, comment: new_comment
   end
 
   def edit(conn, %{ "id" => id }) do

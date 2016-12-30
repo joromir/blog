@@ -10,6 +10,6 @@ defmodule Blog.PostView do
   end
 
   def no_comments_notification(conn, comments) do
-    if Enum.count(comments) == 0, do: "Not a single comment is given for now.."
+    if Enum.count(comments) == 0, do: "Not a single comment is given yet.."
   end
 end
